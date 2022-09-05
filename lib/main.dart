@@ -16,18 +16,35 @@ class myApp extends StatelessWidget {
         title: Text("Bello!!", style: TextStyle(color: Colors.black),),
         backgroundColor: Colors.white,
       ),
-      body: Center(
+      body: Padding(
+        padding: const EdgeInsets.all(10.0),
         child: Container(
-          width: 100,
-          height: 100,
-          child: Text("Watch Me", style: TextStyle(color: Colors.white),),
-          alignment: Alignment.center,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(10),
-            gradient: LinearGradient(colors: [Colors.pink, Colors.yellow,]),
-            boxShadow: [
-              BoxShadow(color: Colors.grey, blurRadius: 10, spreadRadius: 1, offset: Offset(4, 5)),
-            ]
+          width: MediaQuery.of(context).size.width,
+          height: MediaQuery.of(context).size.height,
+          color: Colors.black,
+          child: Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Container(
+                  width: 100,
+                  height: 100,
+                  color: Colors.red,
+                ),
+                Container(
+                  width: 100,
+                  height: 100,
+                  color: Colors.green,
+                ),
+                Container(
+                  width: 100,
+                  height: 100,
+                  color: Colors.yellow,
+                ),
+              ],
+            ),
           ),
         ),
       ),
