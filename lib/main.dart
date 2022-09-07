@@ -18,13 +18,14 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  final TextEditingController _nameController =  TextEditingController();
+  final TextEditingController nameController =  TextEditingController();
   var myText = "Chai";
 
   @override
   void initState() {
     super.initState();
   }
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.blueGrey,
@@ -50,7 +51,7 @@ class _MyAppState extends State<MyApp> {
                   Padding(
                     padding: const EdgeInsets.all(10.0),
                     child: TextField(
-                      controller: _nameController,
+                      controller: nameController,
                       // keyboardType: TextInputType.text,
                       decoration: const InputDecoration(
                         hintText: "Enter your name",
@@ -87,7 +88,9 @@ class _MyAppState extends State<MyApp> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          myText = _nameController.text;
+          myText = nameController.text;
+          setState(() {
+          });
         },
         child: const Icon(Icons.refresh),
       ),
