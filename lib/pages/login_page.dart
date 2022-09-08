@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:my_app/pages/home_page.dart';
-import 'package:my_app/uitls/constants.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Loginpage extends StatefulWidget {
   const Loginpage({super.key});
@@ -17,7 +17,12 @@ class _LoginpageState extends State<Loginpage> {
       body: Stack(
         fit: StackFit.expand,
         children: [
-          Image.asset('assets/Card_img.jpg', fit: BoxFit.cover,color: Colors.black.withOpacity(0.4),colorBlendMode: BlendMode.darken,),
+          Image.asset(
+            'assets/Card_img.jpg',
+            fit: BoxFit.cover,
+            color: Colors.black.withOpacity(0.4),
+            colorBlendMode: BlendMode.darken,
+          ),
           Padding(
             padding: const EdgeInsets.all(16.0),
             child: Center(
@@ -58,9 +63,14 @@ class _LoginpageState extends State<Loginpage> {
                       Padding(
                         padding: const EdgeInsets.all(16.0),
                         child: ElevatedButton(
-                          onPressed: () {
-                            Constants.prefs.setBool("loggedIn", true);
-                            Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>home_page()));
+                          onPressed: () async {
+                            SharedPreferences prefs =
+                                await SharedPreferences.getInstance();
+                            prefs.setBool("loggedIn", true);
+                            Navigator.pushReplacement(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => const HomePage()));
                           },
                           child: const Text('SIGN IN'),
                         ),
